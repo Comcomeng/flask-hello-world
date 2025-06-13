@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        // Kalau perlu variabel, taruh di sini
-    }
-
     stages {
         stage('Clone Repository') {
             steps {
@@ -18,10 +14,10 @@ pipeline {
             }
         }
 
-        stage('Run App or Test') {
+        stage('Run Flask App') {
             steps {
-                // Jalankan script Python atau test-nya
-                sh 'python app.py'
+                sh 'python app.py & sleep 5'
+                echo 'Flask app is running in the background...'
             }
         }
     }
